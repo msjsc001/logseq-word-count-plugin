@@ -24,7 +24,9 @@ jobs:
         run: npm install
         
       - name: Build
-        run: npm run build
+        run: |
+          npm install -g vite
+          npm run build
         
       - name: Create Release
         id: create_release
