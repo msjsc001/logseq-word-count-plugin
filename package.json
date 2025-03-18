@@ -2,10 +2,10 @@
   "name": "logseq-word-count-plugin",
   "version": "1.0.0",
   "description": "A simple word count plugin for Logseq / 简单的字数统计插件",
-  "main": "dist/index.js",
+  "main": "dist/index.html",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build && cp manifest.json icon.svg README.md dist/ && cd dist && zip -r logseq-word-count-plugin.zip *",
     "preview": "vite preview"
   },
   "keywords": [

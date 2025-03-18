@@ -1,9 +1,9 @@
 {
-  "title": "Word Count",
-  "description": "A minimalist word count plugin that displays real-time statistics for your Logseq pages (by 托尼老师)",
+  "title": "Word Count Plugin",
+  "description": "A simple word count plugin for Logseq / 简单的字数统计插件",
   "author": "msjsc001",
   "repo": "msjsc001/logseq-word-count-plugin",
-  "icon": "🔢",
+  "icon": "icon.svg",
   "theme": false,
   "effect": false,
   "sponsors": [],

@@ -6,11 +6,17 @@ export default defineConfig({
     minify: 'esbuild',
     lib: {
       entry: 'index.ts',
-      formats: ['cjs'],
+      formats: ['iife'],
+      name: 'WordCountPlugin',
       fileName: () => 'index.js',
     },
     rollupOptions: {
       external: ['@logseq/libs'],
+      output: {
+        globals: {
+          '@logseq/libs': 'LogseqApi',
+        },
+      },
     },
   },
 })
