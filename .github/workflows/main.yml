@@ -25,7 +25,6 @@ jobs:
         
       - name: Build
         run: |
-          npm install -g vite
           npm run build
         
       - name: Create Release
@@ -39,15 +38,12 @@ jobs:
           draft: false
           prerelease: false
           
-      - name: Zip dist directory
-        run: zip -r logseq-word-count-plugin.zip dist/
-          
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./logseq-word-count-plugin.zip
+          asset_path: ./dist/logseq-word-count-plugin.zip
           asset_name: logseq-word-count-plugin.zip
           asset_content_type: application/zip
