@@ -17,6 +17,14 @@ function createModel() {
 
 const model = createModel();
 
+function countWords(text) {
+  return text.trim().split(/\s+/).length;
+}
+
+function countCharacters(text) {
+  return text.length;
+}
+
 function main() {
   console.log('Plugin loading... / 插件加载中...');
 
@@ -103,6 +111,22 @@ function main() {
   // Initial count / 初始计数
   setTimeout(updateCount, 300);
   console.log('Plugin loaded / 插件加载完成');
+
+  logseq.Editor.registerSlashCommand(
+    'word count',
+    async () => {
+      const block = await logseq.Editor.getCurrentBlock();
+      if (block) {
+        const text = block.content;
+        const words = countWords(text);
+        const chars = countCharacters(text);
+        logseq.UI.showMsg(
+          `Words: ${words}, Characters: ${chars}`,
+          'success'
+        );
+      }
+    }
+  );
 }
 
 // Start plugin / 启动插件
