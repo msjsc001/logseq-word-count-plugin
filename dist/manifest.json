@@ -1,0 +1,11 @@
+{
+  "title": "Word Count Plugin",
+  "description": "A simple word count plugin for Logseq / 简单的字数统计插件",
+  "author": "msjsc001",
+  "repo": "msjsc001/logseq-word-count-plugin",
+  "icon": "icon.svg",
+  "theme": false,
+  "effect": false,
+  "sponsors": [],
+  "web": true
+} 
