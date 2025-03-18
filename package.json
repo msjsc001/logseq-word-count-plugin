@@ -1,29 +1,22 @@
 {
-  "name": "logseq-word-count-plugin",
-  "version": "1.0.0",
-  "description": "A simple word count plugin for Logseq / 简单的字数统计插件",
-  "main": "dist/index.html",
+"name": "logseq-word-count-plugin",
+  "version": "0.0.11",  // 从0.0.10更新为0.0.11
+  "description": "Real-time word counter for your Logseq pages. Supports Chinese and English text / 实时字数统计插件，支持中英文混合统计",
+  "main": "index.js",
+  "icon": "icon.svg",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && cp manifest.json icon.svg README.md dist/ && cd dist && zip -r logseq-word-count-plugin.zip *",
-    "preview": "vite preview"
+    "build": "vite build && copy manifest.json dist\\ && copy icon.svg dist\\ && copy README.md dist\\"
   },
   "keywords": [
     "logseq",
-    "plugin",
-    "word-count",
-    "字数统计"
+    "plugin"
   ],
   "author": "msjsc001",
   "license": "MIT",
-  "logseq": {
-    "id": "word-count",
-    "icon": "icon.svg"
-  },
   "devDependencies": {
-    "@logseq/libs": "^0.0.15",
-    "@types/node": "^20.11.25",
-    "typescript": "^5.4.2",
     "vite": "^4.4.9"
+  },
+  "logseq": {
+    "id": "_l904cgyuk"
   }
-} 
+}

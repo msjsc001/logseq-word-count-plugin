@@ -1,6 +1,12 @@
 export default {
   build: {
     target: 'esnext',
-    minify: true
+    minify: true,
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        inlineDynamicImports: true
+      }
+    }
   }
-} 
+}

@@ -1,6 +1,6 @@
 {
   "title": "Word Count Plugin",
-  "description": "A simple word count plugin for Logseq / 简单的字数统计插件",
+  "description": "Real-time word counter for your Logseq pages. Supports Chinese and English text / 实时字数统计插件，支持中英文混合统计",
   "author": "msjsc001",
   "repo": "msjsc001/logseq-word-count-plugin",
   "icon": "icon.svg",
@@ -8,4 +8,4 @@
   "effect": false,
   "sponsors": [],
   "web": true
-} 
+}

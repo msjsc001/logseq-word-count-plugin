@@ -1,58 +1,43 @@
-# Logseq Word Count Plugin
+# Logseq Word Count Plugin / Logseq 字数统计插件
 
-一个简单而实用的 Logseq 插件，用于统计当前页面或选中文本的字数。支持中英文混合统计。
+A simple and practical Logseq plugin for counting words in your current page. Supports counting both Chinese and English text.
 
-![预览](./preview.svg)
+一个简单而实用的 Logseq 插件，用于统计当前页面的字数。支持中英文混合统计。
 
-## 功能特点
+![工具栏预览](./docs/toolbar-preview.png)
 
-- 实时字数统计
-- 支持中英文混合统计
-- 支持整页统计和选中文本统计
-- 简洁的用户界面
-- 轻量级设计，不影响编辑器性能
+## Features / 功能特点
 
-## 使用方法
+- Real-time word counting / 实时字数统计
+- Support for mixed Chinese and English text / 支持中英文混合统计
+- Clean and simple user interface / 简洁的用户界面
+- Lightweight design that doesn't affect editor performance / 轻量级设计，不影响编辑器性能
+- Automatic counting when switching pages / 切换页面时自动统计
 
-1. 在 Logseq 中启用插件后，你可以：
-   - 使用命令 `/word count` 统计当前页面字数
-   - 选中文本后，右键菜单中选择"统计字数"
-   - 在工具栏中点击字数统计图标
+## How to Use / 使用方法
 
-2. 统计结果将显示：
-   - 总字数（包括中英文）
-   - 英文单词数
-   - 中文字符数
-   - 总字符数
+1. After enabling the plugin in Logseq, you can: / 在 Logseq 中启用插件后，你可以：
+   - Use the command `/字数统计` to count words in the current page / 使用命令 `/字数统计` 统计当前页面字数
+   - Check the toolbar where the word count is displayed / 在工具栏查看字数统计显示
 
-## 安装方法
+2. The count includes: / 统计包括：
+   - Chinese characters / 中文字符
+   - English words / 英文单词
+   - Numbers / 数字
 
-### 从 Marketplace 安装
+## Installation / 安装方法
 
-1. 在 Logseq 中打开插件市场
-2. 搜索 "Word Count"
-3. 点击安装
+### Install from Marketplace / 从插件市场安装
 
-### 手动安装
+1. Open the plugin marketplace in Logseq / 在 Logseq 中打开插件市场
+2. Search for "Word Count" / 搜索 "Word Count"
+3. Click install / 点击安装
 
-1. 下载最新的发布版本
-2. 解压下载的文件
-3. 点击 Logseq 中的 "加载解压的插件"
-4. 选择解压后的文件夹
+### Manual Installation / 手动安装
 
-## 开发
+1. Download the latest release / 下载最新的发布版本
+2. Extract the downloaded file / 解压下载的文件
+3. Click "Load unpacked plugin" in Logseq / 点击 Logseq 中的 "加载解压的插件"
+4. Select the extracted folder / 选择解压后的文件夹
 
-```bash
-# 安装依赖
-npm install
-
-# 开发模式
-npm run dev
-
-# 构建插件
-npm run build
-```
-
-## 许可证
-
-本项目基于 MIT 许可证开源。
+## Development / 开发

@@ -1,133 +1,95 @@
-/* Word Count Plugin / 字数统计插件 */
-function createModel() {
-  return {
-    count: 0,
-    setCount(n) {
-      this.count = n;
-      // Update toolbar display / 更新状态栏显示
-      const countEl = parent.document.querySelector('#word-count-display');
-      if (countEl) {
-        countEl.textContent = `${this.count} words`;
-      } else {
-        console.log('Display element not found / 未找到显示元素 #word-count-display');
-      }
+// 字数统计插件 - 使用最简单可靠方式
+(function () {
+  // 简单变量存储当前字数
+  let currentWordCount = 0;
+  
+  // 防抖函数，避免频繁更新
+  function debounce(fn, delay) {
+    let timer = null;
+    return function() {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => fn.apply(this, arguments), delay);
     }
-  };
-}
-
-const model = createModel();
-
-function countWords(text) {
-  return text.trim().split(/\s+/).length;
-}
-
-function countCharacters(text) {
-  return text.length;
-}
-
-function main() {
-  console.log('Plugin loading... / 插件加载中...');
-
-  // Register UI / 注册UI
-  logseq.App.registerUIItem('toolbar', {
-    key: 'word-count',
-    template: `
-      <div class="word-count-button" style="border-right: none;">
-        <a data-on-click="showCount" style="font-size: 14px; display: flex; align-items: center; padding: 0 8px; cursor: pointer;">
-          <i class="ti ti-calculator-filled" style="margin-right: 4px;"></i>
-          <span id="word-count-display">0 words</span>
-        </a>
-      </div>
-    `,
-    style: {
-      cursor: 'pointer'
-    }
-  });
-
-  // Listen for page changes / 监听页面切换
-  logseq.App.onRouteChanged(() => {
-    console.log('Page changed, updating count... / 页面切换，更新字数...');
-    setTimeout(updateCount, 300);
-  });
-
-  // Listen for content changes / 监听编辑更新
-  logseq.DB.onChanged(() => {
-    console.log('Content updated, updating count... / 内容更新，更新字数...');
-    setTimeout(updateCount, 300);
-  });
-
-  // Update word count function / 更新字数统计的函数
-  const updateCount = async () => {
+  }
+  
+  // 计算字数函数
+  async function countWords() {
     try {
       const page = await logseq.Editor.getCurrentPage();
-      if (!page) {
-        console.log('No page found / 未找到当前页面');
-        return;
-      }
-
-      console.log('Counting page: / 正在统计页面:', page.name);
+      if (!page) return 0;
+      
       const blocks = await logseq.Editor.getPageBlocksTree(page.name);
       let total = 0;
-
-      const countBlockContent = (block) => {
+      
+      const processBlock = (block) => {
         if (block.content) {
-          // Remove Markdown syntax / 移除 Markdown 语法
-          const text = block.content
-            .replace(/#+\s|^\s*[-*]\s|\[\[|\]\]|\(\(|\)\)|#|\*|_|`|>|\||\/|\{|\}|\[|\]|\(|\)|=|~|<|>|!|\$/g, '')
-            .trim();
-          
-          // Count Chinese characters / 计算中文字符
-          const chars = text.match(/[\u4e00-\u9fa5]/g) || [];
-          // Count English words / 计算英文单词
-          const words = text.match(/\b[a-zA-Z]+\b/g) || [];
-          // Count numbers / 计算数字
-          const numbers = text.match(/\d+/g) || [];
-          
-          total += chars.length + words.length + numbers.length;
+          const text = block.content.replace(/[#*`~\[\]()]/g, '');
+          const chars = (text.match(/[\u4e00-\u9fa5]/g) || []).length;
+          const words = (text.match(/\b[a-zA-Z]+\b/g) || []).length;
+          const numbers = (text.match(/\d+/g) || []).length;
+          total += chars + words + numbers;
         }
         if (block.children) {
-          block.children.forEach(countBlockContent);
+          block.children.forEach(processBlock);
         }
       };
-
-      blocks.forEach(countBlockContent);
-      console.log('Count completed / 统计完成，总字数:', total);
-
-      // Update UI display / 更新UI显示
-      model.setCount(total);
-    } catch (error) {
-      console.error('Word count error / 字数统计出错:', error);
+      
+      blocks.forEach(processBlock);
+      console.log('当前页面字数：', total);
+      return total;
+    } catch (err) {
+      console.error('计数错误:', err);
+      return 0;
     }
-  };
+  }
 
-  // Register click event handler / 注册点击事件处理
-  logseq.provideModel({
-    showCount() {
-      console.log('Word count button clicked / 点击了字数统计按钮');
-      updateCount();
-    }
-  });
+  // 更新UI显示
+  function updateUI(count) {
+    currentWordCount = count;
+    // 使用直接的模板刷新而不依赖DOM查询
+    logseq.App.registerUIItem('toolbar', {
+      key: 'word-count-display',
+      template: `
+        <a title="当前页面字数" style="
+          display: flex;
+          align-items: center;
+          padding: 4px 6px;
+          font-size: 14px;">
+          <span>📝 ${count} 字</span>
+        </a>
+      `,
+      replace: true
+    });
+  }
 
-  // Initial count / 初始计数
-  setTimeout(updateCount, 300);
-  console.log('Plugin loaded / 插件加载完成');
+  // 自动更新函数 - 使用防抖
+  const autoUpdate = debounce(async () => {
+    const count = await countWords();
+    updateUI(count);
+  }, 500);
 
-  logseq.Editor.registerSlashCommand(
-    'word count',
-    async () => {
-      const block = await logseq.Editor.getCurrentBlock();
-      if (block) {
-        const text = block.content;
-        const words = countWords(text);
-        const chars = countCharacters(text);
-        logseq.UI.showMsg(
-          `Words: ${words}, Characters: ${chars}`,
-          'success'
-        );
-      }
-    }
-  );
-}
+  // 主函数
+  function main() {
+    console.log('字数统计插件已加载');
+    
+    // 初始化UI
+    updateUI(0);
+    
+    // 监听路由变化
+    logseq.App.onRouteChanged(() => {
+      autoUpdate();
+    });
+    
+    // 初始化计数
+    setTimeout(autoUpdate, 2000);
+    
+    // 添加slash命令
+    logseq.Editor.registerSlashCommand('字数统计', async () => {
+      const count = await countWords();
+      logseq.UI.showMsg(`当前页面：${count} 字`, 'success');
+    });
+  }
 
-// Start plugin / 启动插件
-logseq.ready(main).catch(console.error); 
+  // 启动插件
+  logseq.ready(main).catch(console.error);
+})();
