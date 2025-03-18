@@ -1,0 +1,25 @@
+{
+  "name": "logseq-word-count-plugin",
+  "version": "1.0.0",
+  "description": "A simple word count plugin for Logseq / 简单的字数统计插件",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "logseq",
+    "plugin",
+    "word-count",
+    "字数统计"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "logseq": {
+    "id": "word-count",
+    "icon": "icon.svg"
+  },
+  "devDependencies": {
+    "@logseq/libs": "^0.0.15",
+    "vite": "^4.4.9"
+  }
+} 
