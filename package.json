@@ -1,6 +1,6 @@
 {
 "name": "logseq-word-count-plugin",
-  "version": "0.0.11",  // 从0.0.10更新为0.0.11
+  "version": "1.0.11",  // 从0.0.10更新为0.0.11
   "description": "Real-time word counter for your Logseq pages. Supports Chinese and English text / 实时字数统计插件，支持中英文混合统计",
   "main": "index.js",
   "icon": "icon.svg",
