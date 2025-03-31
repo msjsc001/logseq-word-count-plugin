@@ -1,12 +1,18 @@
-export default {
+import { defineConfig } from 'vite';
+import path from 'path';
+
+export default defineConfig({
   build: {
     target: 'esnext',
-    minify: true,
-    cssCodeSplit: false,
+    minify: 'esbuild',
+    outDir: 'dist',
+    lib: {
+      entry: path.resolve(__dirname, 'index.js'), // 或者'index.ts'
+      formats: ['cjs'],
+      fileName: () => 'index.js'
+    },
     rollupOptions: {
-      output: {
-        inlineDynamicImports: true
-      }
+      external: ['@logseq/libs']
     }
   }
-}
+});
