@@ -4,6 +4,7 @@
   "main": "index.js",
   "logseq": {
     "id": "_l904cgyuk",
-    "main": "index.js"
+    "main": "index.js",
+    "icon": "./icon.svg" 
   }
 }
