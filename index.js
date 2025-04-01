@@ -55,7 +55,7 @@
           align-items: center;
           padding: 4px 6px;
           font-size: 14px;">
-          <span>📝 ${count} 字</span>
+          <span>✏️ ${count} </span>
         </a>
       `,
       replace: true

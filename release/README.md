@@ -4,7 +4,7 @@ A simple and practical Logseq plugin for counting words in your current page. Su
 
 一个简单而实用的 Logseq 插件，用于统计当前页面的字数。支持中英文混合统计。
 
-![image](https://github.com/user-attachments/assets/430f1707-83d8-4334-bd2f-d5d6dff7e24a)
+![工具栏预览](./docs/toolbar-preview.png)
 
 ## Features / 功能特点
 
@@ -13,7 +13,6 @@ A simple and practical Logseq plugin for counting words in your current page. Su
 - Clean and simple user interface / 简洁的用户界面
 - Lightweight design that doesn't affect editor performance / 轻量级设计，不影响编辑器性能
 - Automatic counting when switching pages / 切换页面时自动统计
-- New stylish icon! / 采用了更时尚的新图标！✏️+1️⃣2️⃣3️⃣
 
 ## How to Use / 使用方法
 
