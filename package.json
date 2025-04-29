@@ -3,13 +3,11 @@
   "version": "1.0.11",
   "logseq": {
     "id": "logseq-word-count-plugin",
-    "icon": "icon.svg"
+    "icon": "icon.svg",
+    "main": "dist/index.html"
   },
   "scripts": {
     "build": "parcel build index.html --dist-dir dist || true && node copy-files.js"
-  },
-  "targets": {
-    "main": false
   },
   "devDependencies": {
     "@logseq/libs": "^0.0.15",
