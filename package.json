@@ -1,6 +1,6 @@
 {
   "name": "logseq-word-count-plugin",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "logseq": {
     "id": "logseq-word-count-plugin",
     "icon": "icon.svg",
