@@ -41,3 +41,21 @@ A simple and practical Logseq plugin for counting words in your current page. Su
 4. Select the extracted folder / 选择解压后的文件夹
 
 ## Development / 开发
+
+本项目使用 Parcel 进行构建。
+
+## 发布准备 (Publishing Preparation)
+
+根据 Logseq 插件的最佳实践，在构建 (`npm run build`) 之后，如果你需要手动加载未打包的插件进行测试，或者准备发布到 Marketplace，你需要对 `dist` 目录进行以下处理：
+
+1.  **复制文件:** 将以下文件从项目根目录复制到 `dist` 目录中：
+    *   `package.json`
+    *   `README.md`
+    *   `icon.svg` (或你的图标文件)
+    *   `LICENSE` (如果存在)
+2.  **修改 `dist/package.json`:** 打开位于 `dist` 目录下的 `package.json` 文件，找到 `"main"` 字段，并将其值修改为 `"index.html"`。
+    ```json
+    "main": "index.html"
+    ```
+3.  **测试:** 使用 Logseq 的 "Load unpacked plugin" 功能加载修改后的 `dist` 文件夹进行测试。
+4.  **打包 (可选):** 如果要创建 `.zip` 包进行分发，请将 **`dist` 目录的 *内容***（而不是 `dist` 目录本身）压缩成 `.zip` 文件。

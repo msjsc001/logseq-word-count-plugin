@@ -1,0 +1,17 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build artifacts
+dist/
+*.local
+
+# IDE config files
+.idea/
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
