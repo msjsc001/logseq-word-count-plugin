@@ -1,61 +1,105 @@
-# Logseq Word Count Plugin / Logseq 字数统计插件
+# Logseq 字数统计插件 (Word Count Plugin)
 
-A simple and practical Logseq plugin for counting words in your current page. Supports counting both Chinese and English text.
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/msjsc001/logseq-word-count-plugin)](https://github.com/msjsc001/logseq-word-count-plugin/releases/latest)
+[![License](https://img.shields.io/github/license/msjsc001/logseq-word-count-plugin)](LICENSE)
 
-一个简单而实用的 Logseq 插件，用于统计当前页面的字数。支持中英文混合统计。
+一个简单实用的 Logseq 插件，用于实时统计当前页面的字数。
 
-![PixPin_2025-04-30_12-09-56](https://github.com/user-attachments/assets/a082273e-ee4b-4425-a95d-9299b0a3f5c9)
+---
 
-## Features / 功能特点
+## ✨ 功能特性
 
-- Real-time word counting / 实时字数统计
-- Support for mixed Chinese and English text / 支持中英文混合统计
-- Clean and simple user interface / 简洁的用户界面
-- Lightweight design that doesn't affect editor performance / 轻量级设计，不影响编辑器性能
-- Automatic counting when switching pages / 切换页面时自动统计
+*   **实时显示:** 在 Logseq 工具栏实时显示当前页面的字数统计。
+*   **自动更新:**
+    *   切换页面时自动重新统计。
+    *   编辑内容停止输入后（约 300ms 延迟）自动更新统计。
+*   **混合统计:** 支持统计中文字符、英文单词和数字。
+*   **简洁图标:** 使用 "✏️" 图标加数字的格式显示，例如 "✏️1234"。
 
-## How to Use / 使用方法
+## 📸 截图
 
-1. After enabling the plugin in Logseq, you can: / 在 Logseq 中启用插件后，你可以：
-   - Use the command `/字数统计` to count words in the current page / 使用命令 `/字数统计` 统计当前页面字数
-   - Check the toolbar where the word count is displayed / 在工具栏查看字数统计显示
+![插件在工具栏的显示效果](https://github.com/user-attachments/assets/a082273e-ee4b-4425-a95d-9299b0a3f5c9)
+*(截图展示了插件在工具栏的位置和大致样式)*
 
-2. The count includes: / 统计包括：
-   - Chinese characters / 中文字符
-   - English words / 英文单词
-   - Numbers / 数字
+## 🚀 安装
 
-## Installation / 安装方法
+### 方式一：从 Logseq 插件市场安装 (推荐)
 
-### Install from Marketplace / 从插件市场安装
+1.  在 Logseq 中打开 `...` -> `插件市场`。
+2.  搜索 "Word Count Plugin" (或类似名称，取决于发布审核后的名称)。
+3.  点击 "安装"。
 
-1. Open the plugin marketplace in Logseq / 在 Logseq 中打开插件市场
-2. Search for "Word Count" / 搜索 "Word Count"
-3. Click install / 点击安装
+### 方式二：手动安装
 
-### Manual Installation / 手动安装
+1.  从 [Releases 页面](https://github.com/msjsc001/logseq-word-count-plugin/releases/latest) 下载最新的 `logseq-word-count-plugin-vX.Y.Z.zip` 文件。
+2.  解压下载的 `.zip` 文件。
+3.  在 Logseq 中打开 `...` -> `插件`。
+4.  点击 "加载解压的插件"。
+5.  选择你刚刚解压出来的文件夹。
 
-1. Download the latest release / 下载最新的发布版本
-2. Extract the downloaded file / 解压下载的文件
-3. Click "Load unpacked plugin" in Logseq / 点击 Logseq 中的 "加载解压的插件"
-4. Select the extracted folder / 选择解压后的文件夹
+## 💡 使用方法
 
-## Development / 开发
+插件安装并启用后，会自动在 Logseq 顶部工具栏的右侧区域显示一个 "✏️" 图标，后面跟着当前页面的实时字数统计。
 
-本项目使用 Parcel 进行构建。
+当你在不同页面间切换，或在当前页面编辑内容并稍作停顿时，字数会自动更新。
 
-## 发布准备 (Publishing Preparation)
+## 🧑‍💻 开发
 
-根据 Logseq 插件的最佳实践，在构建 (`npm run build`) 之后，如果你需要手动加载未打包的插件进行测试，或者准备发布到 Marketplace，你需要对 `dist` 目录进行以下处理：
+本项目使用 TypeScript 编写，并使用 Parcel 进行构建。
 
-1.  **复制文件:** 将以下文件从项目根目录复制到 `dist` 目录中：
-    *   `package.json`
-    *   `README.md`
-    *   `icon.svg` (或你的图标文件)
-    *   `LICENSE` (如果存在)
-2.  **修改 `dist/package.json`:** 打开位于 `dist` 目录下的 `package.json` 文件，找到 `"main"` 字段，并将其值修改为 `"index.html"`。
-    ```json
-    "main": "index.html"
+### 环境设置
+
+1.  克隆仓库:
+    ```bash
+    git clone https://github.com/msjsc001/logseq-word-count-plugin.git
+    cd logseq-word-count-plugin
     ```
-3.  **测试:** 使用 Logseq 的 "Load unpacked plugin" 功能加载修改后的 `dist` 文件夹进行测试。
-4.  **打包 (可选):** 如果要创建 `.zip` 包进行分发，请将 **`dist` 目录的 *内容***（而不是 `dist` 目录本身）压缩成 `.zip` 文件。
+2.  安装依赖:
+    ```bash
+    npm install
+    # 或者使用 pnpm
+    # pnpm install
+    ```
+
+### 构建
+
+```bash
+npm run build
+```
+此命令会执行 Parcel 构建，并将必要文件处理后放入 `dist` 目录。
+
+### 本地调试
+
+1.  执行一次 `npm run build` 来生成 `dist` 目录。
+2.  在 Logseq 中，点击 `...` -> `插件` -> `加载解压的插件`。
+3.  **选择项目根目录** (`logseq-word-count-plugin`) 进行加载。
+    *   (或者，也可以选择加载 `dist` 目录，这是最终用户安装的方式)。
+4.  修改代码后，需要重新运行 `npm run build`，然后在 Logseq 中重新加载插件（或重启 Logseq）以查看更改。
+
+*提示: 详细的开发和构建流程，以及常见问题解决方法，请参考 [`编写插件指南.md`](./编写插件指南.md)。*
+
+## 🏗️ 项目结构
+
+```
+.
+├── dist/                  # 构建输出目录 (用于 Logseq 加载)
+├── src/
+│   └── main.ts            # 插件核心逻辑
+├── node_modules/          # 项目依赖
+├── copy-files.js          # Node.js 脚本，用于准备 dist 目录
+├── index.html             # Parcel 构建入口 HTML
+├── package.json           # 项目配置和依赖
+├── tsconfig.json          # TypeScript 配置
+├── README.md              # 项目说明 (本文档)
+├── LICENSE                # 项目许可证
+├── icon.svg               # 插件图标
+└── 编写插件指南.md        # 详细的插件开发指南 (面向 AI)
+```
+
+## 🤝 贡献
+
+欢迎通过提交 Issue 或 Pull Request 来报告问题或贡献代码！
+
+## 📄 License
+
+本项目使用 [MIT License](LICENSE) 授权。
