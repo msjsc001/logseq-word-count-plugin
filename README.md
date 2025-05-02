@@ -9,12 +9,12 @@
 
 ## ✨ 功能特性
 
-*   **实时显示:** 在 Logseq 工具栏实时显示当前页面的字数统计。
-*   **自动更新:**
-    *   切换页面时自动重新统计。
-    *   编辑内容停止输入后（约 300ms 延迟）自动更新统计。
-*   **混合统计:** 支持统计中文字符、英文单词和数字。
-*   **简洁图标:** 使用 "✏️" 图标加数字的格式显示，例如 "✏️1234"。
+* **实时显示:** 在 Logseq 工具栏实时显示当前页面的字数统计。
+* **自动更新:**
+  * 切换页面时自动重新统计。
+  * 编辑内容停止输入后（约 300ms 延迟）自动更新统计。
+* **混合统计:** 支持统计中文字符、英文单词和数字。
+* **简洁图标:** 使用 "✏️" 图标加数字的格式显示，例如 "✏️1234"。
 
 ## 📸 截图
 
@@ -25,17 +25,17 @@
 
 ### 方式一：从 Logseq 插件市场安装 (推荐)
 
-1.  在 Logseq 中打开 `...` -> `插件市场`。
-2.  搜索 "Word Count Plugin" (或类似名称，取决于发布审核后的名称)。
-3.  点击 "安装"。
+1. 在 Logseq 中打开 `...` -> `插件市场`。
+2. 搜索 "Word Count Plugin" (或类似名称，取决于发布审核后的名称)。
+3. 点击 "安装"。
 
 ### 方式二：手动安装
 
-1.  从 [Releases 页面](https://github.com/msjsc001/logseq-word-count-plugin/releases/latest) 下载最新的 `logseq-word-count-plugin-vX.Y.Z.zip` 文件。
-2.  解压下载的 `.zip` 文件。
-3.  在 Logseq 中打开 `...` -> `插件`。
-4.  点击 "加载解压的插件"。
-5.  选择你刚刚解压出来的文件夹。
+1. 从 [Releases 页面](https://github.com/msjsc001/logseq-word-count-plugin/releases/latest) 下载最新的 `logseq-word-count-plugin-vX.Y.Z.zip` 文件。
+2. 解压下载的 `.zip` 文件。
+3. 在 Logseq 中打开 `...` -> `插件`。
+4. 点击 "加载解压的插件"。
+5. 选择你刚刚解压出来的文件夹。
 
 ## 💡 使用方法
 
@@ -43,38 +43,43 @@
 
 当你在不同页面间切换，或在当前页面编辑内容并稍作停顿时，字数会自动更新。
 
-## 🧑‍💻 开发
+## 🧑‍💻开发1
+
+本项目完全基于自然语言AI开发，如果你也想这样开发可以阅读： [msjsc001/logseq-plugin-tutorial: 通过最简易的方式让所有人都学会用自然语言配合AI编写logseq插件 / Teaching everyone the easiest way to write Logseq plugins using natural language and AI.](https://github.com/msjsc001/logseq-plugin-tutorial)
+
+## 🧑‍💻 开发2
 
 本项目使用 TypeScript 编写，并使用 Parcel 进行构建。
 
 ### 环境设置
 
-1.  克隆仓库:
-    ```bash
-    git clone https://github.com/msjsc001/logseq-word-count-plugin.git
-    cd logseq-word-count-plugin
-    ```
-2.  安装依赖:
-    ```bash
-    npm install
-    # 或者使用 pnpm
-    # pnpm install
-    ```
+1. 克隆仓库:
+   ```bash
+   git clone https://github.com/msjsc001/logseq-word-count-plugin.git
+   cd logseq-word-count-plugin
+   ```
+2. 安装依赖:
+   ```bash
+   npm install
+   # 或者使用 pnpm
+   # pnpm install
+   ```
 
 ### 构建
 
 ```bash
 npm run build
 ```
+
 此命令会执行 Parcel 构建，并将必要文件处理后放入 `dist` 目录。
 
 ### 本地调试
 
-1.  执行一次 `npm run build` 来生成 `dist` 目录。
-2.  在 Logseq 中，点击 `...` -> `插件` -> `加载解压的插件`。
-3.  **选择项目根目录** (`logseq-word-count-plugin`) 进行加载。
-    *   (或者，也可以选择加载 `dist` 目录，这是最终用户安装的方式)。
-4.  修改代码后，需要重新运行 `npm run build`，然后在 Logseq 中重新加载插件（或重启 Logseq）以查看更改。
+1. 执行一次 `npm run build` 来生成 `dist` 目录。
+2. 在 Logseq 中，点击 `...` -> `插件` -> `加载解压的插件`。
+3. **选择项目根目录** (`logseq-word-count-plugin`) 进行加载。
+   * (或者，也可以选择加载 `dist` 目录，这是最终用户安装的方式)。
+4. 修改代码后，需要重新运行 `npm run build`，然后在 Logseq 中重新加载插件（或重启 Logseq）以查看更改。
 
 *提示: 详细的开发和构建流程，以及常见问题解决方法，请参考 [`编写插件指南.md`](./编写插件指南.md)。*
 
