@@ -1,7 +1,6 @@
 # Logseq 字数统计插件 (Word Count Plugin)
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/msjsc001/logseq-word-count-plugin)](https://github.com/msjsc001/logseq-word-count-plugin/releases/latest)
-[![License](https://img.shields.io/github/license/msjsc001/logseq-word-count-plugin)](LICENSE)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/msjsc001/logseq-word-count-plugin)](https://github.com/msjsc001/logseq-word-count-plugin/releases/latest) [![GitHub last commit](https://img.shields.io/github/last-commit/msjsc001/logseq-word-count-plugin)](https://github.com/msjsc001/logseq-word-count-plugin/commits/master) [![GitHub All Releases Downloads](https://img.shields.io/github/downloads/msjsc001/logseq-word-count-plugin/total?label=Downloads&color=brightgreen)](https://github.com/msjsc001/logseq-word-count-plugin/releases)
 
 一个简单实用的 Logseq 插件，用于实时统计当前页面的字数。
 
